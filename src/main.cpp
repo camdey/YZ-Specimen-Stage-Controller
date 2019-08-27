@@ -14,16 +14,16 @@ TMC2130Stepper zDriver = TMC2130Stepper(Z_EN_PIN, Z_DIR_PIN, Z_STEP_PIN, Z_CS_PI
 AccelStepper yStepper = AccelStepper(yStepper.DRIVER, Y_STEP_PIN, Y_DIR_PIN);
 AccelStepper zStepper = AccelStepper(zStepper.DRIVER, Z_STEP_PIN, Z_DIR_PIN);
 
-volatile int yStickPos, yDirection;
-volatile int zStickPos, zDirection;
-bool cButton = false;
-bool zButton = false;
-bool outputsDisabled = false, yDisabled = false, zDisabled = false;
-bool readSuccess;
-long firstRead, lastRead, millisSinceRefresh;
-long prevStep, currentMicros, microsSinceStep;
-long currentTime, lastStateChange, millisSinceStateChange;
-int stepFrequency = 100;
+volatile int yStickPos, yDirection;                                   // Y-axis stepper position and direction
+volatile int zStickPos, zDirection;                                   // Z-axis stepper position and direction
+bool cButton = false;                                                 // upper button on nunchuk
+bool zButton = false;                                                 // lower button on nunchuk
+bool outputsDisabled = false, yDisabled = false, zDisabled = false;   // stepper motor enable/disable
+bool readSuccess;                                                     // check if joystick read was successful
+long firstRead, lastRead, millisSinceRefresh;                         // joystick read interval
+long prevStep, currentMicros, microsSinceStep;                        // motor step interval
+long currentTime, lastStateChange, millisSinceStateChange;            // button change interval
+int stepFrequency = 100;                                              // number of steps per second
 
 void setup() {
     Serial.begin(250000);
