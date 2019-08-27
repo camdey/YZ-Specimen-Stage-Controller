@@ -56,10 +56,10 @@ int setFrequency(int yPos, int zPos, bool frequencyModifier) {
 
   // set speed
   if (yPos >= zPos) {
-    frequency = map(yPos, 5, 100, 0, maxFrequency);
+    frequency = map(yPos, 5, 100, 1, maxFrequency);
   }
   else if (zPos > yPos) {
-    frequency = map(zPos, 5, 100, 0, maxFrequency);
+    frequency = map(zPos, 5, 100, 1, maxFrequency);
   }
 
   return frequency;
